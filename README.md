@@ -17,7 +17,7 @@ License
 Details can be found in the file LICENSE.
 
 License-file referencing and other doc. formatting taken from
-damiendallimore.
+[damiendallimore](https://github.com/damiendallimore "damiendallimore on GitHub").
 
 Quick Start
 -----------
@@ -31,10 +31,9 @@ convenient.
 Contribute
 ----------
 
-Get `json-endure` from GitHub (https://github.com/) and clone the
-resources to your computer. For example, use the following command: 
-
->  git clone https://github.com/aburnheimer/json-endure.git
+Please fork the GitHub project (https://github.com/aburnheimer/json-endure),
+make any changes, commit and push to GitHub, and submit a pull request.  Including
+tests for your changes would be greatly appreciated!
 
 Resources
 ---------
