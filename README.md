@@ -2,13 +2,13 @@ json-endure
 ===========
 
 `json-endure` provides helper methods to the JSON and String classes to
-make-do with interrupted JSON text.  It does so by closing
-double-quotes, brackets and braces, whether the interruption occurs in
+make-do with truncated JSON text.  It does so by closing
+double-quotes, brackets and braces, whether the truncation occurs in
 an array value, hash key, or hash value.  These methods may be helpful
 in a case where you want to examine the first bunch of bytes of a very
 large file, without downloading all of it.
 
-It will not repair bad JSON encountered before the interruption.
+It will not repair bad JSON encountered before the truncation.
 
 License
 -------
