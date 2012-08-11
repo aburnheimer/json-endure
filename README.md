@@ -19,14 +19,21 @@ Details can be found in the file LICENSE.
 License-file referencing and other doc. formatting taken from
 [damiendallimore](https://github.com/damiendallimore "damiendallimore on GitHub").
 
-Quick Start
------------
+Install
+-------
 
-1.	Save the string.rb and array.rb files somewhere in your source tree.
-2.	Include a line that says `load "string.rb"` in one of your files.
+> gem install json-endure
 
-Soon enough, I will have this made into a gem to make it loads more
-convenient.
+Usage
+-----
+
+  require 'json-endure'
+  broken = String.new('{ "123": "90", "abc": { "30')
+
+  good_hash = JSON.endure_and_parse broken
+
+  # ... or ...
+  fixed = broken.coax_into_json!
 
 Contribute
 ----------
