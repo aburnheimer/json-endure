@@ -8,7 +8,8 @@ an array value, hash key, or hash value.  These methods may be helpful
 in a case where you want to examine the first bunch of bytes of a very
 large file, without downloading all of it.
 
-It will not repair bad JSON encountered before the truncation.
+It will not repair bad JSON encountered before the truncation.  All
+JSON-restoration code has been implemented in Ruby.
 
 License
 -------
@@ -22,16 +23,16 @@ License-file referencing and other doc. formatting taken from
 Install
 -------
 
-> gem install json-endure
+    gem install json-endure
 
 Usage
 -----
 
-  >> require 'json-endure'                              #=> true
-  >> broken = String.new('{ "123": "90", "abc": { "30') #=> "{ \"123\": \"90\", \"abc\": { \"30"
-  >> good_hash = JSON.endure_and_parse broken           #=> {"123"=>"90", "abc"=>{"30"=>""}}
-  >> fixed = broken.coax_into_json!                     #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
-  >> broken                                             #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
+    require 'json-endure'                              #=> true
+    broken = String.new('{ "123": "90", "abc": { "30') #=> "{ \"123\": \"90\", \"abc\": { \"30"
+    good_hash = JSON.endure_and_parse broken           #=> {"123"=>"90", "abc"=>{"30"=>""}}
+    fixed = broken.coax_into_json!                     #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
+    broken                                             #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
 
 Contribute
 ----------
