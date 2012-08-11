@@ -1,4 +1,4 @@
-require File.expand_path File.join(File.dirname(__FILE__), '../lib/array')
+require File.expand_path File.join(File.dirname(__FILE__), '../lib/json-endure/array')
 
 describe Array, "#last=" do
   it "sets the last element to a new value" do

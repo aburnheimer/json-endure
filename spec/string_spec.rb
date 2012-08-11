@@ -1,4 +1,4 @@
-require File.expand_path File.join(File.dirname(__FILE__), '../lib/string')
+require File.expand_path File.join(File.dirname(__FILE__), '../lib/json-endure/string')
 
 describe String, "#coax_into_json" do
 

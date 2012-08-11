@@ -1,6 +1,6 @@
 $:.delete(File.expand_path File.join(File.dirname(__FILE__), '../lib'))
 require 'json'
-require File.expand_path File.join(File.dirname(__FILE__), '../lib/json')
+require File.expand_path File.join(File.dirname(__FILE__), '../lib/json-endure/json')
 
 describe JSON, "::endure" do
 
