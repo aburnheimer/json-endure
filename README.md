@@ -27,12 +27,13 @@ Install
 
 Usage
 -----
-
-    require 'json-endure'                              #=> true
-    broken = String.new('{ "123": "90", "abc": { "30') #=> "{ \"123\": \"90\", \"abc\": { \"30"
-    good_hash = JSON.endure_and_parse broken           #=> {"123"=>"90", "abc"=>{"30"=>""}}
-    fixed = broken.coax_into_json!                     #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
-    broken                                             #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
+```ruby
+require 'json-endure'                              #=> true
+broken = String.new('{ "123": "90", "abc": { "30') #=> "{ \"123\": \"90\", \"abc\": { \"30"
+good_hash = JSON.endure_and_parse broken           #=> {"123"=>"90", "abc"=>{"30"=>""}}
+fixed = broken.coax_into_json!                     #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
+broken                                             #=> "{ \"123\": \"90\", \"abc\": { \"30\":\"\"}}"
+```
 
 Contribute
 ----------
