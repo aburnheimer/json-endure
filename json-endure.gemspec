@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'json-endure'
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.summary     = %q{Handle truncated JSON-text}
 
   s.description = %q{Helper methods to JSON and String to make-do } +

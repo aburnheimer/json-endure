@@ -1,14 +1,26 @@
-# string_spec.rb
-require 'string.rb'
+$:.delete(File.expand_path File.join(File.dirname(__FILE__), '../lib'))
 require 'json'
+require File.expand_path File.join(File.dirname(__FILE__), '../lib/json')
 
-describe String, "#close_off_any_json_surround_characters" do
+describe JSON, "::endure" do
+
+  it "returns the endured string" do
+    string         = String.new('{ "123": "90", "abc": { "30')
+    expected_value = String.new('{ "123": "90", "abc": { "30":""}}')
+
+    test_value = JSON.endure(string)
+
+    test_value.should eq(expected_value)
+  end
+end
+
+describe JSON, "::endure_and_parse" do
 
   it "handles empty arrays" do
     string = String.new('[]')
     expected_value = Array.new
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -17,7 +29,7 @@ describe String, "#close_off_any_json_surround_characters" do
     string = String.new('{}')
     expected_value = Hash.new
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -29,7 +41,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Array.new
     expected_value << 123
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -40,7 +52,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value << 1
     expected_value << Hash.new
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -50,7 +62,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["a"] = Array.new
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -60,7 +72,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Array.new
     expected_value << ""
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -71,7 +83,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value << 123
     expected_value << 90
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -82,7 +94,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value << 123
     expected_value << "90"
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -93,7 +105,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value << 123
     expected_value << '9"0'
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -106,7 +118,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array << 30
     expected_value << internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -119,7 +131,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array << 30
     expected_value << internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -132,7 +144,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_hash["90"] = ""
     expected_value << internal_hash
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -145,7 +157,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_hash["90"] = 123
     expected_value << internal_hash
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -158,7 +170,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_hash["90"] = "123"
     expected_value << internal_hash
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -171,7 +183,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_hash["90"] = "123"
     expected_value << internal_hash
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -182,7 +194,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value << 123
     expected_value << "90"
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -194,7 +206,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["123"] = 90
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -204,7 +216,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value[""] = ""
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -214,7 +226,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["12"] = ""
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -224,7 +236,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["12"] = ""
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -234,7 +246,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["123"] = 90
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -244,7 +256,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["123"] = "90"
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -254,7 +266,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["123"] = '9"0'
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -265,7 +277,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["123"] = "90"
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -278,7 +290,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array << 30
     expected_value["abc"] = internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -291,7 +303,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array << 30
     expected_value["abc"] = internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -304,7 +316,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array["30"] = ""
     expected_value["abc"] = internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -317,7 +329,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array["30"] = 456
     expected_value["abc"] = internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -330,7 +342,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array["30"] = "456"
     expected_value["abc"] = internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -343,7 +355,7 @@ describe String, "#close_off_any_json_surround_characters" do
     internal_array["30"] = "456"
     expected_value["abc"] = internal_array
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
@@ -354,7 +366,7 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value["123"] = "90"
     expected_value[""] = ""
 
-    test_value = JSON.parse string.close_off_any_json_surround_characters
+    test_value = JSON.endure_and_parse(string)
 
     test_value.should eq(expected_value)
   end
