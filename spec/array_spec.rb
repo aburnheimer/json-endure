@@ -1,5 +1,4 @@
-# array_spec.rb
-require 'array.rb'
+require File.expand_path File.join(File.dirname(__FILE__), '../lib/array')
 
 describe Array, "#last=" do
   it "sets the last element to a new value" do
