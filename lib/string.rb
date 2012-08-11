@@ -2,14 +2,14 @@ require File.expand_path File.join(File.dirname(__FILE__), 'json')
 
 class String
 
-  def survive_json()
+  def coax_into_json()
     str = self.clone
-    str.survive_json!()
+    str.coax_into_json!()
     return str
   end
 
-  def survive_json!()
-    self = JSON.endure(self)
+  def coax_into_json!()
+    self.replace(JSON.endure(self))
   end
 
 end
