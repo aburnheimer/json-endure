@@ -93,8 +93,6 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value << 123
     expected_value << '9"0'
 
-    puts string
-    puts expected_value.to_s
     test_value = JSON.parse string.close_off_any_json_surround_characters
 
     test_value.should eq(expected_value)
@@ -256,8 +254,6 @@ describe String, "#close_off_any_json_surround_characters" do
     expected_value = Hash.new
     expected_value["123"] = '9"0'
 
-    puts string
-    puts expected_value.to_s
     test_value = JSON.parse string.close_off_any_json_surround_characters
 
     test_value.should eq(expected_value)
