@@ -12,6 +12,16 @@ describe JSON, "::endure" do
 
     test_value.should eq(expected_value)
   end
+
+  it "handles strings with embedded hashes" do
+    string         = String.new('{"123":{"90":"abc"},"30":40}')
+    expected_value = String.new('{"123":{"90":"abc"},"30":40}')
+
+    test_value = JSON.endure(string)
+
+    test_value.should eq(expected_value)
+  end
+
 end
 
 describe JSON, "::endure_and_parse" do

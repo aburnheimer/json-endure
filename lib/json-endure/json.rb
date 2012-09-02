@@ -118,7 +118,11 @@ module JSON
           end
 
         when JsonStateVariable::IN_HASH_IN_VALUE
-          state_stack.last = JsonStateVariable::IN_HASH_PRE_KEY if c == ','
+          if c == ','
+            state_stack.last = JsonStateVariable::IN_HASH_PRE_KEY 
+          elsif c == '}'
+            state_stack.pop
+          end
 
         when JsonStateVariable::IN_HASH_IN_STR_VALUE
           if c == '\\'
